@@ -1,0 +1,9 @@
+.textCentered {
+  text-align: center;
+}
+.newUserBtn {
+  cursor: pointer;
+}
+.newUserBtn:hover {
+  background-color: lightblue;
+}

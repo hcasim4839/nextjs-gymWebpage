@@ -1,0 +1,16 @@
+.text {
+  text-align: center;
+}
+.warningText {
+  text-align: center;
+  color: red;
+  margin: 0;
+}
+.inputButton {
+  border-radius: 8px;
+  transition-duration: 250ms;
+  cursor: pointer;
+}
+.inputButton:hover {
+  background-color: lightblue;
+}

@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.checkboxTitle {
+  text-align: center;
+}
+.item {
+  margin-right: 10px;
+}
+.cmb {
+  background-color: lightgray;
+  margin-right: 10px;
+}
+.checkboxDisabled {
+  cursor: default;
+}
+.checkbox:hover {
+  cursor: pointer;
+}
+.button {
+  cursor: pointer;
+  margin-right: 10px;
+
+  border: 0px solid;
+  border-radius: 8px;
+}
+.button:hover {
+  background-color: lightblue;
+}

@@ -1,0 +1,26 @@
+.flexContainer {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  table-layout: fixed;
+  background-color: #38555f;
+  width: 80%;
+  border: 2px solid;
+  border-radius: 15px;
+}
+.caption {
+  font-size: x-large;
+  text-shadow: 1px 0px teal;
+  letter-spacing: 1px;
+}
+.td {
+  text-align: center;
+}
+.exerciseColumn {
+  text-align: center;
+}
+
+.row:hover {
+  background-color: #5b8899;
+}

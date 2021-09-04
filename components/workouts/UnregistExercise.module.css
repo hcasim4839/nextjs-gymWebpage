@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.cmb {
+  background-color: lightgray;
+}
+.exerciseLabel {
+  margin: 0px 10px;
+  color: gray;
+}
+.exerciseDetails {
+  margin: 0px 10px;
+}
+.button {
+  cursor: pointer;
+}
+.button:hover {
+  background-color: lightblue;
+}

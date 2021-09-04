@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  cursor: pointer;
+}
+
+.buttons {
+  cursor: pointer;
+}
