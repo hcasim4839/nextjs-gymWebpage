@@ -1,9 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
 import UserProfile from "../../components/userProfile/UserProfile";
 import { UserOutlined } from "@ant-design/icons";
 import ProfileLayout from "../../components/ui/Profiles_Layout";
 import classes from "../../styles/profiles.module.css";
+import Card from "../../components/ui/Card";
+import { useState } from "react";
+
 export async function getServerSideProps() {
   const mssql = require("mssql/msnodesqlv8");
   const sqlConfig = new mssql.ConnectionPool({
@@ -15,7 +17,7 @@ export async function getServerSideProps() {
     },
   });
   const CONN = await sqlConfig.connect();
-  const QUERY_CMD = "SELECT * FROM Users";
+  const QUERY_CMD = "SELECT * FROM Accounts";
   let sqlResultsJson = await sqlConfig.request().query(QUERY_CMD);
 
   const AMT_OF_RECORDS = sqlResultsJson.recordsets[0].length;
@@ -30,6 +32,12 @@ export async function getServerSideProps() {
 export default function Profiles({ sqlResultsJson, AMT_OF_RECORDS }) {
   let listOfUserProfiles = [];
 
+  function handleForm(e) {
+    e.preventDefault();
+  }
+  const [popUpMenuClass, setpopUpMenuClass] = useState(
+    classes.popUpMenuInvisible
+  );
   for (let i = 0; i < AMT_OF_RECORDS; i++) {
     let entryName = sqlResultsJson[i].FirstName;
     let userId = sqlResultsJson[i].UserId;
@@ -48,19 +56,45 @@ export default function Profiles({ sqlResultsJson, AMT_OF_RECORDS }) {
     listOfUserProfiles = [...listOfUserProfiles, NEW_ENTRY];
   }
 
+  const POP_UP_MENU = (
+    <div className={popUpMenuClass}>
+      <Card>
+        <form onClick={handleForm}>
+          <label>Profile Name: </label>
+          <input type="text" className={classes.userInput} required></input>
+          <button onClick={() => setpopUpMenuClass(classes.popUpMenuInvisible)}>
+            Submit
+          </button>
+          <button onClick={() => setpopUpMenuClass(classes.popUpMenuInvisible)}>
+            Exit
+          </button>
+        </form>
+      </Card>
+    </div>
+  );
   return (
     <ProfileLayout>
       <Head>
         <title>Profiles</title>
         <meta name="description" content="The list of accounts in use" />
       </Head>
-      <h1 className={classes.textCentered}>Which is your profile?</h1>
-      <UserOutlined style={{ fontSize: "40px" }}></UserOutlined>
-      <h2 className={classes.textCentered}>
-        <Link href="/profiles/regist">
-          <button className={classes.newUserBtn}>New User</button>
-        </Link>
-      </h2>
+
+      {POP_UP_MENU}
+      <h1 className={classes.title}>User Profiles</h1>
+      <div className={classes.newUserSection}>
+        <UserOutlined style={{ fontSize: "40px" }}></UserOutlined>
+        <h2>
+          <button
+            className={classes.newUserBtn}
+            onClick={() => {
+              setpopUpMenuClass(classes.popUpMenuVisible);
+            }}
+          >
+            New User
+          </button>
+        </h2>
+      </div>
+
       <div>{listOfUserProfiles}</div>
     </ProfileLayout>
   );

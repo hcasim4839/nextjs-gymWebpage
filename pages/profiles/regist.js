@@ -1,6 +1,7 @@
-import RegistForm from "../../components/registForm/RegistForm";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import GeneralForm from "../../components/form/GeneralForm";
+import USER_ACCOUNT from "../../lib/UserAccount.js";
 export default function Regist() {
   const ROUTER = useRouter();
 
@@ -14,7 +15,14 @@ export default function Regist() {
       },
     });
 
-    ROUTER.push("/profiles");
+    if (RESPONSE.status === 201) {
+      //set the userAccount module and sessions here
+      USER_ACCOUNT.setName(userAccount);
+      window.alert(USER_ACCOUNT.getName());
+      ROUTER.push("/profiles");
+    } else {
+      window.alert("User was not registered");
+    }
   }
   return (
     <>
@@ -25,7 +33,8 @@ export default function Regist() {
           content="Where you can add a new user to the App"
         />
       </Head>
-      <RegistForm onRegister={userRegistHandler}></RegistForm>
+      <GeneralForm isRegistForm={true} onSubmitFunction={userRegistHandler} />
     </>
   );
 }
+//<GeneralForm isRegistForm={true} onSubmitFunction={userRegistHandler} />

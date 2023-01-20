@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 50%;
-  margin-left: -8rem;
+  left: 40%;
+  min-width: 25%;
 }

@@ -3,6 +3,8 @@ import Link from "next/link";
 import Table from "../../../components/table/Table";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import classes from "../../../styles/userWorkouts.module.css";
+
 export async function getServerSideProps(context) {
   const mssql = require("mssql/msnodesqlv8");
   const sqlConfig = new mssql.ConnectionPool({
@@ -44,12 +46,16 @@ function userWorkouts({ sqlResultsJson, AMT_OF_RECORDS }) {
 
     const ID = ROUTER.query.userWorkouts;
     const newExerciseEntry = (
-      <Card key={EXERCISE}>
-        <img href="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697"></img>
-        <label>{EXERCISE}</label>
-        <label>Sets: {REPS}</label>
-        <label>Reps: {SETS}</label>
-      </Card>
+      <div className={classes.flexItem}>
+        <Card>
+          <button className={classes.exerciseButton}>
+            <label>{EXERCISE}</label>
+          </button>
+
+          <label className={classes.label}> Sets: {REPS}</label>
+          <label className={classes.label}> Reps: {SETS}</label>
+        </Card>
+      </div>
     );
 
     const newScheduleEntry = {
@@ -69,17 +75,12 @@ function userWorkouts({ sqlResultsJson, AMT_OF_RECORDS }) {
           content="Your Weekly Schedule and list of workouts."
         />
       </Head>
-      <h1>Workout Routine</h1>
-      <h2>Workouts and their days in which to perform them!</h2>
-      <div className="exercise-group">
-        <ul>{listOfWorkouts}</ul>
-      </div>
-      <Table
-        exerciseInfo={workoutSchedule}
-        exerciseAmt={workoutSchedule.length}
-      />
-      <Link href="/">
-        <button>
+      <h1 className={classes.title}>Workout Routine</h1>
+      <h2 className={classes.details}>
+        Workouts and their days in which to perform them!
+      </h2>
+      <Link href="/" prefetch={false}>
+        <button className={classes.leftButton}>
           <a>Back home</a>
         </button>
       </Link>
@@ -88,6 +89,15 @@ function userWorkouts({ sqlResultsJson, AMT_OF_RECORDS }) {
           <a>Manage Exercises</a>
         </button>
       </Link>
+      <div className={classes.gridContainer}>
+        <div className={classes.flexContainer}>
+          <ul>{listOfWorkouts}</ul>
+        </div>
+        <Table
+          exerciseInfo={workoutSchedule}
+          exerciseAmt={workoutSchedule.length}
+        />
+      </div>
     </>
   );
 }

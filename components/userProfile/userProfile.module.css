@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
 }
+.container button{
+  position: relative;
+  top: 10px;
+
+}
 
 .profile {
   cursor: pointer;

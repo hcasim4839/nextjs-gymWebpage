@@ -23,7 +23,7 @@ function Exercise(props) {
           <label className={classes.exerciseDetails}>Sets:</label>
           <label>{props.sets}</label>
 
-          <label className={classes.exerciseDetails}>Reps:</label>
+          <label className={classes.exerciseDetails}> Reps: </label>
           <label>{props.reps}</label>
         </div>
       </Card>

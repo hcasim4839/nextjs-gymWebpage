@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  
+}
+.form{
+  min-width: 25%;
+  max-width: fit-content;
+  position: absolute;
+  top: 40%;
+  left: 37%;
+  
+}
+.textField {
+  border-radius: 5px;
+  margin-left: 5%;
+  background-color: rgb(196, 194, 194);
+  text-align: center;
+}
+.label:hover {
+  cursor: pointer;
+}
+
+.submitButton {
+  display: flex;
+  position:relative;
+  justify-content: flex-end;
+  margin: 30px;
+  margin-right: 50px;
+  bottom: 10px;
+}
+.details {
+  font-size: 24px;
+}
+.subDetails {
+  font-size: 15px;
+}
+.LoginGroup{
+  background-color: white;
+  border-radius: 15px;
+  border-color: beige;
+}

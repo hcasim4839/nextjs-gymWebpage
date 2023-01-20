@@ -21,7 +21,7 @@ export default function UserProfile(props) {
   }
   return (
     <Fragment>
-      <Card key={props.userId}>
+      <Card key={props.userId} className={classes.card}>
         <div className={classes.container}>
           <UserOutlined style={{ fontSize: "40px" }}></UserOutlined>
 

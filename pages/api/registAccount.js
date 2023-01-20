@@ -14,17 +14,12 @@ export default async function handler(req, res) {
       });
       let conn = await sqlConfig.connect();
 
+      const COLUMN_NAMES = "UserName,User_ID";
+      const COLUMN_VALUES = `'${data.userName}','${data.userId}'`;
       let queryCmd =
-        "INSERT INTO Users VALUES ('" +
-        data.userId +
-        "','" +
-        data.firstName +
-        "','" +
-        data.lastName +
-        "')";
+        "INSERT INTO Users (" + COLUMN_NAMES + ")VALUES(" + COLUMN_VALUES + ")";
 
       await sqlConfig.request().query(queryCmd);
-
       conn.close();
       res.status(201).json({ message: "Account Registered" });
     } else {

@@ -1,0 +1,27 @@
+.label {
+  margin-left: 20px;
+}
+.title {
+  font-size: 40px;
+}
+.details {
+  font-size: 24px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: [first] 500px [end] 809px;
+}
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ 
+
+}
+.leftButton{
+  margin: 1rem;
+}
+.exerciseButton{
+  
+}
