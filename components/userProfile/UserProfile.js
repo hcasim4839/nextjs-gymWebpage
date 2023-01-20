@@ -25,17 +25,17 @@ export default function UserProfile(props) {
         <div className={classes.container}>
           <UserOutlined style={{ fontSize: "40px" }}></UserOutlined>
 
-          <Link href={props.userWorkoutPath}>
-            <a>
-              <button className={classes.buttons}>
-                {props.entryName}'s Schedule
-              </button>
-            </a>
+          <Link href={props.userWorkoutPath} legacyBehavior>
+
+            <button className={classes.buttons}>
+              {props.entryName}'s Schedule
+            </button>
+
           </Link>
         </div>
       </Card>
       <div className={classes.container}>
-        <Link href={props.manageExercisePath}>
+        <Link href={props.manageExercisePath} legacyBehavior>
           <button className={classes.buttons}>
             Edit {props.entryName} List of Workouts
           </button>

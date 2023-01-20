@@ -183,47 +183,45 @@ function ManageExercise({
       <h3 className={classes.text}>Seems you got all the exercises...</h3>
     );
 
-  return (
-    <>
-      <Head>
-        <title>Manage your Exercises</title>
-        <meta
-          name="description"
-          content="Change what exercise you want on your routine as well as input the sets and reps and chose the days you want to perform them in."
-        />
-      </Head>
-      <form onSubmit={userWorkoutChangesHandler}>
-        <h3 className={classes.text}>Remove Exercise</h3>
-        <h4 className={classes.text}>
-          Delete any of these exercise from your workout routine
-        </h4>
+  return <>
+    <Head>
+      <title>Manage your Exercises</title>
+      <meta
+        name="description"
+        content="Change what exercise you want on your routine as well as input the sets and reps and chose the days you want to perform them in."
+      />
+    </Head>
+    <form onSubmit={userWorkoutChangesHandler}>
+      <h3 className={classes.text}>Remove Exercise</h3>
+      <h4 className={classes.text}>
+        Delete any of these exercise from your workout routine
+      </h4>
 
-        <Card>{LIST_OF_USER_WORKOUT_SECTION}</Card>
+      <Card>{LIST_OF_USER_WORKOUT_SECTION}</Card>
 
-        <br />
-        <h3 className={classes.text}>Add exercise</h3>
-        <h4 className={classes.text}>
-          Insert any of these exercises to your workout routine
-        </h4>
+      <br />
+      <h3 className={classes.text}>Add exercise</h3>
+      <h4 className={classes.text}>
+        Insert any of these exercises to your workout routine
+      </h4>
 
-        <h5 className={classes.text}>
-          Make sure to read the description to be well informed if the exercise
-          is right for you
-        </h5>
-        <Card>{LIST_OF_UNREGIST_WORKOUT_SECTION}</Card>
-        <input
-          type="submit"
-          value="Submit all data"
-          className={classes.inputButton}
-        />
-        <Link href={"/profiles/userWorkouts/" + ID}>
-          <button>
-            <a>Go to my Exercise List</a>
-          </button>
-        </Link>
-      </form>
-    </>
-  );
+      <h5 className={classes.text}>
+        Make sure to read the description to be well informed if the exercise
+        is right for you
+      </h5>
+      <Card>{LIST_OF_UNREGIST_WORKOUT_SECTION}</Card>
+      <input
+        type="submit"
+        value="Submit all data"
+        className={classes.inputButton}
+      />
+      <Link href={"/profiles/userWorkouts/" + ID} legacyBehavior>
+        <button>
+          <a>Go to my Exercise List</a>
+        </button>
+      </Link>
+    </form>
+  </>;
 }
 /*
 

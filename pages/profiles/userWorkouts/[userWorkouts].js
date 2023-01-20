@@ -66,40 +66,38 @@ function userWorkouts({ sqlResultsJson, AMT_OF_RECORDS }) {
     listOfWorkouts = [...listOfWorkouts, newExerciseEntry];
     workoutSchedule = [...workoutSchedule, newScheduleEntry];
   }
-  return (
-    <>
-      <Head>
-        <title>User Workouts</title>
-        <meta
-          name="description"
-          content="Your Weekly Schedule and list of workouts."
-        />
-      </Head>
-      <h1 className={classes.title}>Workout Routine</h1>
-      <h2 className={classes.details}>
-        Workouts and their days in which to perform them!
-      </h2>
-      <Link href="/" prefetch={false}>
-        <button className={classes.leftButton}>
-          <a>Back home</a>
-        </button>
-      </Link>
-      <Link href={"/profiles/userWorkouts/manageExercises/" + ID}>
-        <button>
-          <a>Manage Exercises</a>
-        </button>
-      </Link>
-      <div className={classes.gridContainer}>
-        <div className={classes.flexContainer}>
-          <ul>{listOfWorkouts}</ul>
-        </div>
-        <Table
-          exerciseInfo={workoutSchedule}
-          exerciseAmt={workoutSchedule.length}
-        />
+  return <>
+    <Head>
+      <title>User Workouts</title>
+      <meta
+        name="description"
+        content="Your Weekly Schedule and list of workouts."
+      />
+    </Head>
+    <h1 className={classes.title}>Workout Routine</h1>
+    <h2 className={classes.details}>
+      Workouts and their days in which to perform them!
+    </h2>
+    <Link href="/" prefetch={false} legacyBehavior>
+      <button className={classes.leftButton}>
+        <a>Back home</a>
+      </button>
+    </Link>
+    <Link href={"/profiles/userWorkouts/manageExercises/" + ID} legacyBehavior>
+      <button>
+        <a>Manage Exercises</a>
+      </button>
+    </Link>
+    <div className={classes.gridContainer}>
+      <div className={classes.flexContainer}>
+        <ul>{listOfWorkouts}</ul>
       </div>
-    </>
-  );
+      <Table
+        exerciseInfo={workoutSchedule}
+        exerciseAmt={workoutSchedule.length}
+      />
+    </div>
+  </>;
 }
 
 export default userWorkouts;

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import classes from "../ui/MainNavigation.module.css";
 import Image from "next/image";
-import GeneralForm from "../../components/form/GeneralForm.js";
+import LoginForm from "../../components/form/LoginForm.js";
 import { Fragment, useState } from "react";
+import { getCookie, hasCookie } from "cookies-next";
 
 export default function MainNavigation() {
   const LOGIN_FORM_CLASSES = [classes.formDisplayed, classes.formHidden];
@@ -36,46 +37,41 @@ export default function MainNavigation() {
     if (entry.text === "Login") {
       return (
         <li tabIndex={entry.position + 1} key={entry.position + 1}>
-          <button onClick={loginHandler}>
-            <a>{entry.text}</a>
-          </button>
+          <LoginForm />
         </li>
       );
     } else {
       return (
         <li tabIndex={entry.position + 1} key={entry.position + 1}>
-          <Link href={entry.link} prefetch={false}>
-            <a>{entry.text}</a>
+          <Link href={entry.link} prefetch={false} legacyBehavior>
+            {entry.text}
           </Link>
         </li>
       );
     }
   });
-  function submitHandler( ){
-
-  }
+  function submitHandler() {}
   const loginForm = (
     <Fragment>
       <label>User Name: </label>
       <input type="text"></input>
-      <button type="submit" onClick={submitHandler}>Submit</button>
+      <button type="submit" onClick={submitHandler}>
+        Submit
+      </button>
     </Fragment>
   );
   return (
     <header className={classes.header}>
       <nav>
         <ul className={classes.container}>
-          <Link href="/" tabIndex="1" prefetch={false}>
-            <a>
-              <Image
-                src="/dumbbell.svg"
-                alt="logo"
-                width="80vw"
-                height="80vh"
-              ></Image>
-            </a>
+          <Link href="/" tabIndex="1" prefetch={false} legacyBehavior>
+            <Image
+              src="/dumbbell.svg"
+              alt="logo"
+              width={80}
+              height={80}
+            ></Image>
           </Link>
-          <div className={formClass}></div>
           {nav_Items_Section}
         </ul>
       </nav>

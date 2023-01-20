@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import GeneralForm from "../../components/form/GeneralForm";
-import USER_ACCOUNT from "../../lib/UserAccount.js";
+import { setCookie } from "cookies-next";
+
 export default function Regist() {
   const ROUTER = useRouter();
 
@@ -17,8 +18,8 @@ export default function Regist() {
 
     if (RESPONSE.status === 201) {
       //set the userAccount module and sessions here
-      USER_ACCOUNT.setName(userAccount);
-      window.alert(USER_ACCOUNT.getName());
+      setCookie("account", userAccount);
+
       ROUTER.push("/profiles");
     } else {
       window.alert("User was not registered");
