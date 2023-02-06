@@ -2,7 +2,11 @@ import { useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import styles from "./GeneralForm.module.css";
 
-export default function GeneralForm({ onSubmitFunction, isRegistForm }) {
+export default function GeneralForm({
+  onSubmitFunction,
+  isRegistForm,
+  heading,
+}) {
   const USER_NAME_INPUT_REF = useRef();
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
